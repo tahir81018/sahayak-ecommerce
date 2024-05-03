@@ -25,6 +25,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://cdn-uicons.flaticon.com/2.3.0/uicons-brands/css/uicons-brands.css"
         ></link>
+        <link
+          rel="stylesheet"
+          href="https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+        ></link>
       </head>
       <body className={inter.className}>
         <StoreProvider>
@@ -38,7 +42,7 @@ export default function RootLayout({ children }) {
             <div>{children}</div>
           </div>
         </StoreProvider>
-      <Footer />
+        <Footer />
       </body>
     </html>
   );

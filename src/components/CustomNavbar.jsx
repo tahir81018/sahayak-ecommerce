@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import AddProductModal from "./AddProductModal";
 import AddProductComponent from "./AddProductComponent";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
 import CartComponent from "./CartComponent";
+import shop from "@/assets/icons/shop.svg";
+import Image from "next/image";
 
 const CustomNavbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -13,15 +14,14 @@ const CustomNavbar = () => {
   const cartData = useSelector((state) => state.cartReducer);
   const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
-  const[subTotal,setSubTotal]=useState(0);
-  const router = useRouter();
+  const [subTotal, setSubTotal] = useState(0);
 
   useEffect(() => {
-    let total=0
+    let total = 0;
     let i = 0;
     cartData.forEach((item) => {
       i = i + item.quantity;
-      total=total+item.product.price*item.quantity
+      total = total + item.product.price * item.quantity;
     });
     setCart(cartData);
     setCount(i);
@@ -48,10 +48,12 @@ const CustomNavbar = () => {
           href="https://flowbite.com/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
+          <Image
+            height={50}
+            width={50}
+            src={shop}
             className="h-8"
-            alt="Flowbite Logo"
+            alt="e-Commerce"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             e-Commerce
@@ -68,7 +70,12 @@ const CustomNavbar = () => {
               setIsCartOpen(true);
             }}
           ></i>{" "}
-          <CartComponent cart={cart} isCartOpen={isCartOpen} onClose={closeCart} subTotal={subTotal}/>
+          <CartComponent
+            cart={cart}
+            isCartOpen={isCartOpen}
+            onClose={closeCart}
+            subTotal={subTotal}
+          />
         </div>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
