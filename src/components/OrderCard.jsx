@@ -34,7 +34,7 @@ const OrderCard = ({ order }) => {
       });
   };
   return (
-    <div className=" bg-white rounded-md shadow-md p-6">
+    <div className=" bg-white rounded-md shadow-md p-6 my-4">
       <h2 className=" text-md font-medium mb-3">Order ID : {order.orderId}</h2>
       <div className=" grid grid-cols-2 p-2">
         <div>Paid : {order.totalAmount}</div>

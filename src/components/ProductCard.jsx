@@ -23,22 +23,28 @@ const ProductCard = ({ product }) => {
           <p className="text-gray-600">Qnt : {product.quantity}</p>
         </div>
         <div className="flex justify-center mt-4">
-          <button
-            className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 mr-2"
-            onClick={addProduct}
-          >
-            Add to Cart
-          </button>
-          <button
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
-            onClick={() => {
-              router.push(`/products/details?id=${product.id}`, {
-                scroll: false,
-              });
-            }}
-          >
-            Details
-          </button>
+          {product.quantity == 0 ? (
+            <button disabled className=" bg-slate-300 p-2 rounded-md">Sold Out</button>
+          ) : (
+            <>
+              <button
+                className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 mr-2"
+                onClick={addProduct}
+              >
+                Add to Cart
+              </button>
+              <button
+                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+                onClick={() => {
+                  router.push(`/products/details?id=${product.id}`, {
+                    scroll: false,
+                  });
+                }}
+              >
+                Details
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
